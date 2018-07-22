@@ -15,28 +15,6 @@
 ;”j‰Z‘O‚Æ”j‰ZŒã‚Å—‚ê•û‚É•Ï‰»‚ªo‚Ü‚·B
 ;
 ;-------------------------------------------------
-;ƒLƒƒƒ‰’Ç‰Á‚ÌŽè‡i•K“ÇIj
-;‚PFEVENT_K19_–¼‘O.ERB‚ÆEVENT_K19_SHOP.ERB‚ÆEVENT_K19_DAILY.ERB‚ÆCHARAX1.csv‚Ìƒtƒ@ƒCƒ‹–¼‚Æ“à•”‚ÌX1‚ðƒLƒƒƒ‰”Ô†‚É•ÏX‚µA–¼‘O•”•ª‚ðƒLƒƒƒ‰–¼‚É‚·‚é
-
-;‚QF•ÏXŒã‚ÌERBƒtƒ@ƒCƒ‹‚ðEVENT_KƒtƒHƒ‹ƒ_‚ÉACHARAX1.csv‚ðCSVƒtƒHƒ‹ƒ_‚É“ü‚ê‚é
-
-;‚RF‘¼‚ÌƒLƒƒƒ‰‚ðŽQl‚ÉCHARAX1.csv“à•”‚Ì‰ŠúÝ’è‚ð‹Lq‚·‚é
-;”Ô†,–¼‘O,ŒÄ‚Ñ–¼,Šî‘b‚Í•K‚¸‘S•”–„‚ß‚Ü‚µ‚å‚¤BCSTR‚à‰Â”\‚ÈŒÀ‚è–„‚ß‚½•û‚ª—Ç‚¢‚Å‚·
-;CSTR,ƒpƒ“ƒc`ƒAƒNƒZƒTƒŠ‚Í‰Šúˆß‘•‚È‚Ì‚Å‘‚©‚È‚¢‚Æ‰Šú‚ª‘S—‡‚Å‚·
-
-;‚SF‚±‚Ìƒtƒ@ƒCƒ‹“à‚É‚ ‚éA@EVENT_PROFILE_K19‚ð‹Lq‚·‚é
-;CASE "Š©—U’¼Œã"‚Í•Ê‚É–³‚­‚Ä‚à\‚¢‚Ü‚¹‚ñ
-;CASE "Š©—U‘O"‚Æ"Ð‰î•¶"‚Í—L‚Á‚½•û‚ª—Ç‚¢‚Å‚·
-
-;‚TFCALL_NAME.ERB“à‚Ì
-;CASE X1
-;	STR:Šî–{ŒÄ‚Ñ–¼ = %CNAME_K19(ARGS)%
-;‚Ì‚Qsæ“ª‚Ì ; ‚ðíœ‚·‚éB
-
-;‚UFˆÈã‚ÅƒLƒƒƒ‰’Ç‰Á‚Ì€”õ‚ª®‚¢‚Ü‚·
-;–{•Ò‚Ì“ú‘Ö‚í‚èƒ^ƒCƒ~ƒ“ƒO‚Å‚±‚ñ‚Èl‚ª‹‚Ü‚·‚æ`‚Á‚ÄÐ‰î‚·‚éƒCƒxƒ“ƒg‚ª—L‚è‚Ü‚·‚ªA‚»‚ê‚ðŒ©‚È‚¢‚Å‚àƒƒCƒ“‰æ–Ê[301]‚ÅŠ©—U‚Å‚«‚Ü‚·
-
-;‚VF‚ ‚Æ‚ÍERBƒtƒ@ƒCƒ‹‚É‘‚¯‚Î‘‚­‚¾‚¯’‚é‚æ‚¤‚É‚È‚è‚Ü‚·
 
 ;-------------------------------------------------
 ;ŒÄ‚Ñ–¼‚ÌÝ’èB"/"‚Ì‰E‚É‚Ó‚è‚ª‚È‚ð‘‚­B
@@ -176,7 +154,7 @@ IF CEVENT("’²‹³ŠJŽnF‰’²‹³") == 0
 	PRINTFORML 
 	PRINTFORML - ƒVƒXƒeƒ€ƒƒbƒZ[ƒW -
 	PRINTFORML ƒ}ƒmƒ“‚Í‹É’[‚É«Œðsˆ×‚ðŒ™‚ª‚Á‚Ä‚¢‚Ü‚·B
-	PRINTFORML ‚½‚¾AŒ³—ˆ‚ªˆú–‚‚È‚Ì‚Å–{‹C‚ÈŠæ‚È‚³‚Å‚Í‚È‚¢‚Í‚¸‚Å‚·‚ªcc
+	PRINTFORML ‚½‚¾AŒ³—ˆ‚ªˆú–‚‚È‚Ì‚Å–{‹C‚ÈŠæ‚È‚³‚Å‚Í‚È‚¢‚Í‚¸‚Å‚·cc
 	PRINTFORML ¸Žq‚Æ¸‰t‚Ì–¡‚ð‚µ‚Á‚©‚èŠo‚¦‚³‚¹A‚µ‚Á‚©‚è‹ü•ž‚³‚¹‚é‚©A‚ ‚é‚¢‚Í”º—µ‚Æ‚µ‚Ä”F‚ß‚ç‚ê‚ê‚Î‚ ‚é‚¢‚Í‚ÆŽv‚¢‚Ü‚·B
 	PRINTFORML ‚²•‰^‚ðI
 	PRINTFORML 
@@ -194,7 +172,7 @@ ELSEIF MARK:‹ü•žˆó == 2 && TALENT:—ö•ç == 0 && CEVENT("’²‹³ŠJŽnF‹ü•žˆó‚k‚u‚
 	CALL SET_CEVENT, "’²‹³ŠJŽnF‹ü•žˆó‚k‚u‚Q"
 ;‹ü•žˆóLv3
 ELSEIF MARK:‹ü•žˆó == 3 && TALENT:—ö•ç == 0 && CEVENT("’²‹³ŠJŽnF‹ü•žˆó‚k‚u‚R") == 0
-	PRINTFORMW 
+	CALL K19_APPROVAL_DEFLOWERING
 	CALL SET_CEVENT, "’²‹³ŠJŽnF‹ü•žˆó‚k‚u‚R"
 ;—ö•ç
 ELSEIF TALENT:—ö•ç && CEVENT("’²‹³ŠJŽnF—ö•ç") == 0
@@ -204,6 +182,9 @@ ELSEIF TALENT:—ö•ç && CEVENT("’²‹³ŠJŽnF—ö•ç") == 0
 ELSEIF TALENT:‘ŠŽv‘Šˆ¤ && CEVENT("’²‹³ŠJŽnF‘ŠŽv‘Šˆ¤") == 0
 	PRINTFORMW 
 	CALL SET_CEVENT, "’²‹³ŠJŽnF‘ŠŽv‘Šˆ¤"
+;‘¼Aˆú–‚ŠoÁƒtƒ‰ƒO‚ª—§‚Á‚Ä‚¢‚éê‡B
+ELSEIF ABL:TARGET:¸‰t’†“Å >= 5
+	CALL K19_APPROVAL_DEFLOWERING
 ;•Žè‚Ì—L–³‚ðƒ`ƒFƒbƒNi‚¢‚È‚¢ê‡‚Í“ñ‰ñ–ÚˆÈ~‚Ö”ò‚Ôj
 ELSEIF ASSI <= 0
 	CALL K19_KOJO2
@@ -241,6 +222,39 @@ ENDIF
 
 RETURN 1
 
+@K19_APPROVAL_DEFLOWERING
+;ˆú–‚ŠoÁ‚Æ‚©‚µ‚½‚Æ‚«‚Ì‹¤’ÊƒƒbƒZ[ƒWŠÖ”B
+IF CEVENT("ˆú–‚ŠoÁFƒ}ƒmƒ“")
+	;ŠoÁ‚µ‚Ä‚¢‚é‚Æ‚«‚Í–³Ž‹B
+	RETURN 0
+ELSE
+	PRINTFORMW u‚ A‚ A‚ ‚ÌA%CALLNAME:MASTER%cc‚±‚±‚Ì‚Æ‚±‚ë‚à‚¤‚¸‚Á‚ÆA‚±‚Ì‚ ‚½‚è‚©‚ç‰º‚ªA‚»‚Ìccv
+	PRINTFORMW %NAME:TARGET%‚Í‰º• •”‚Ì•t‹ß‚©‚ç”é‚ß‚é•”ˆÊ‚Ü‚Å‚ð‚È‚¼‚Á‚ÄA‚³‚·‚Á‚Ä‚Ý‚¹‚È‚ª‚çA‚¤‚é‚Þ“µ‚ÅÁ‚¦“ü‚è‚»‚¤‚Èº‚Å‘±‚¯‚æ‚¤‚Æ‚µA	‚»‚Ì‚½‚Ñ‚É‹­‚¢‚½‚ß‚ç‚¢‚ÅŒ¾—t‚É‹l‚Ü‚è‚Â‚Ã‚¯‚Ä‚¢‚½B
+	PRINTFORML
+	PRINTFORMW ‚»‚Ì—lŽq‚É‚Â‚¢‚¢‚½‚¸‚çS‚ÅO‚ð’D‚¢‚»‚Ìˆ³Šª‚ÌŽ¿—Ê‚ð—¼‚ÌŽè‚É‚í‚µ‚Ã‚©‚Ý‚ÉæøçW‚µ‚½B
+	PRINTFORML
+	PRINTFORMW u‚Ð‚ÁA‚Þ‚£‚£‚£IIv
+	PRINTFORML
+	PRINTFORMW ‚»‚ê‚¾‚¯‚Å‰õŠy‚ð“o‚è‹l‚ß‚ÄAŒû‚Ã‚¯‚ð—£‚µ‚Äâ‹©‚µ‚½B
+	PRINTFORMW –Ê”’‚­‚Ä‚Â‚¢‚â‚è‚©‚¯‚é‚ªA”Þ—‚Ì‘Ì‚ðÅ‰‚É–¡‚í‚Á‚½“ú‚Ì‚æ‚¤‚ÉA‚»‚Á‚Æ•ø‚«‚µ‚ß‚½B
+	PRINTFORMW ‚¾‚ª‚»‚Ì•ø‚«‚µ‚ß‚Í‚ ‚ÌŽž‚Æ‚Íˆá‚¤B
+	PRINTFORMW ‚®‚Á‚Æd‚­Ž‚¿ã‚ª‚Á‚½‰º• •”‚ðA”Þ—‚Ìáu‚«‚É‰Ÿ‚µ•t‚¯‚Ä‚â‚éB
+	PRINTFORML
+	PRINTFORMW u‚Ÿcc‚Ó‚Ÿ‚Ÿcc‚¹‚Á‚­A‚·cc%CALLNAME:MASTER%AŽ„A‚¹‚Á‚­‚·‚µ‚½‚¢cc‚¨‚Ü‚ñ‚±‚ÉA‚¨‚¿‚ñ‚ÛA”²‚«·‚µ‚µ‚Ä‚à‚ç‚Á‚ÄA‚¨• ‚Ì‰œ‚Å	‚½‚­‚³‚ñA¸‰t‚Æ¸Žq‚ðˆù‚Ý‚½‚¢‚Ìcc‚¨‚Ë‚ª‚¢A‚µ‚Ü‚·‚ÁIv
+	PRINTFORMW u‚à‚¤A‚»‚êˆÈŠOA–]‚Ü‚È‚¢‚©‚ç‚ŸA‚à‚¤A•’i‚¦‚Á‚¿‚È‚±‚ÆA‚³‚ê‚Ä‚àA“{‚ç‚È‚¢‚©‚ç‚Ÿcc‚Ï‚ñ‚ÂA‚¢‚­‚ç‚Å‚à‚ ‚°‚é‚©‚ç‚Ÿcc‚µ	‚ÄA‚¹‚Á‚­‚·‚µ‚ÄA‚¸‚Á‚±‚¸‚±‚µ‚Ä‚Ácc‚¢‚Á‚Ï‚¢A‚¢‚Á‚Ï‚¢äS“àŽË¸(‚È‚©‚¾‚µ)A‚µ‚Ä‚ÁccŽq‹{‚É‚Ñ‚ã[‚Ñ‚ã[‚µ‚Äcc‚¥‚Áv
+	PRINTFORML
+	PRINTFORMW ˆú–‚‚ç‚µ‚¢ˆú–‚‚É‘Â‚¿‚½%CALLNAME:TARGET%‚ÌŽp‚ÍA‚È‚É‚æ‚è‚Â‚â‚â‚©‚É”ü‚µ‚­Aîî“I‚ÅB
+	PRINTFORMW ‚·‚×‚Ä‚Ì—~–]‚Æ‚¢‚¤—~–]‚ð’‚¬ž‚Ü‚¸‚É‚¢‚ç‚ê‚¸A”Þ—‚É•¢‚¢‚©‚Ô‚³‚Á‚½B
+
+	IF FIRSTCOMS("‚u‘}“ü") == 0
+	    PRINTFORMW ¦–{”Ôsˆ×‚ð‹–‰Â‚³‚ê‚Ü‚µ‚½B
+	ELSE
+	    PRINTFORMW ¦%CALLNAME:TARGET%‚ªƒZƒbƒNƒX‚É‚¨‚Ú‚ê‚Ü‚µ‚½B
+	ENDIF
+	PRINTFORMW ¦%CALLNAME:TARGET%‚ªˆú–‚‚Æ‚µ‚ÄŠoÁ‚µ‚Ü‚µ‚½B
+	CALL SET_CEVENT("ˆú–‚ŠoÁFƒ}ƒmƒ“")
+	RETURN 1
+ENDIF
 
 ;-------------------------------------------------
 ;’²‹³ŠJŽnŽži2‰ñ–ÚˆÈ~j
@@ -700,15 +714,18 @@ ENDIF
 IF SELECTCOM == 13
 	;‰‚ß‚Ä
 	IF FIRSTCOM(SELECTCOM) == 0
-		PRINTFORMW 
+		IF CEVENT("ˆú–‚ŠoÁFƒ}ƒmƒ“")
+			PRINTFORMW 
+		ELSE
+			PRINTFORMW 
+		ENDIF
 	;“ñ‰ñ–ÚˆÈ~
 	ELSE
 		;—ö•ç
-		IF TALENT:—ö•ç
-			PRINTFORMW 
-		;‚»‚êˆÈŠO
+		IF CEVENT("ˆú–‚ŠoÁFƒ}ƒmƒ“")
+			PRINTFORMW u%TEXTR("‚Ç‚¤ccH@‚Ð‚­‚Ð‚­‚µ‚Ä‚é‚Å‚µ‚åA‚±‚±cc/‚Ó‚ÓA‚»‚ñ‚È‚É‚¶‚Á‚ÆŒ©‚ç‚ê‚½‚ç‚¶‚ã‚Ô‚¶‚ã‚Ô‚É‚È‚Á‚¿‚á‚¢‚Ü‚·/Œ©‚Ä‚Ý‚Äcc‚à‚¤H‚×‚²‚ë‚Å‚·‚æA‚¢‚Â‚Å‚à‚¸‚ñ‚Á‚Á‚Ä‚µ‚Ä‚­‚¾‚³‚¢‚Ë/‚ ‚Í‚Ÿcc‚­‚Ï‚Á‚Ä‚µ‚½‚ç“ü‚Á‚Ä‚é‚ÌŽv‚¢o‚µ‚¿‚á‚Á‚½cc/‚ËAŒ©‚Ä‚é‚¾‚¯‚¶‚á‚È‚­‚ÄAŒû‚Ã‚¯‚à‚µ‚Ä‚­‚¾‚³‚¢ccã‚Å‚àA‰º‚Å‚à‚¢‚¢‚©‚ç‚Ÿ/‚ ‚Ÿ‚ñcc‚±‚ê‚¶‚ç‚³‚ê‚Ä‚éŠ´‚¶‚Å‚¤‚¸‚¤‚¸‚·‚écc")%v
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW u%TEXTR("‚¾A‚¾‚ß‚¥‚¥A‚±‚ê‚Í‚¸‚©‚µcc/‚ñ‚ŸA‚ A‚ ‚Ó‚ê‚Äcc‚Í‚£‚£/‚ÝAŒ©‚ç‚ê‚é‚Ì•Ï‚È‚Ìcc‚íAŽ„A‚Ó‚Ÿ‚Ÿ/‚±A‚±‚ñ‚È‚ÌA‚Ó‚Ÿ‚Ÿcc/‚¿‚ªA‚¿‚ª‚¤‚Ì‚§AŽ„A”G‚ê‚â‚·‚­‚Ä‚¥A‚¦‚Á‚¿‚È‚ñ‚©‚¶‚á/")%v
 		ENDIF
 	ENDIF
 	RETURN 1
@@ -888,10 +905,26 @@ ENDIF
 IF SELECTCOM >= 60 && SELECTCOM <= 69 && FIRSTCOMS("‚u‘}“ü") == 0
 	;ˆ—
 	IF TALENT:ˆ—
-		;—ö•ç
-		IF TALENT:—ö•ç
+		;ðŒ‚ð–ž‚½‚µ‚Ä‹–‚³‚ê‚Ä‚¢‚ê‚ÎB–{—ˆ‚Ìƒ‹[ƒg‚Í‚±‚Á‚¿B
+		IF TALENT:—ö•ç || TALENT:‘ŠŽv‘Šˆ¤
+			;ƒˆ¤‹–‘øƒ‹[ƒgB
 			PRINTFORMW 
-		;‚»‚êˆÈŠO
+			CALL SET_CEVENT("”j‰ZF‹–‚³‚ê‚½‘rŽ¸")
+		ELSEIF CEVENT("ˆú–‚ŠoÁFƒ}ƒmƒ“") && CEVENT("”j‰ZFƒ}ƒmƒ“‚ðƒŒƒCƒv‚·‚é") == 0
+			;ƒˆ¤ƒ‹[ƒg‚¶‚á‚È‚¢‚¯‚Ç‹–‚³‚ê‚Ä‚é”j‰ZB
+			PRINTFORMW u‚«A‚½‚Ÿcc‚ÁIIv
+			PRINTFORMW ‘Ò‚¿‚í‚Ñ‚½uŠÔ‚ªA”j‰Z‚Ì’É‚Ý‚È‚Çˆêu‚Å‰Ÿ‚µ—¬‚·‚©‚Ì‚æ‚¤‚ÉA%CALLNAME:TARGET%‚Æ‚ÌŒ‹‡•”‚©‚ç—­‚Ü‚Á‚½ˆ¤‰t‚ª‰Ÿ‚µo‚³‚ê‚Äˆì‚ê‚½B
+			PRINTFORMW u‚Á‚­cc’É‚¢A‚¯‚ÇA‚»‚ê‚ª‚¢‚¢‚ÌA‚â‚Á‚ÆA‚â‚Á‚ÆƒZƒbƒNƒX‚Å‚«‚½‚ñ‚¾‚à‚Ì‚§cc‚Í‚ŸA‚Í‚Ÿ‚ŸA‚Á‚Ÿ‚ IIv
+			PRINTFORMW ‚æ‚è[‚­A‚æ‚è‹­‚­A‚æ‚èŒƒ‚µ‚­‚Â‚È‚ª‚è‚½‚»‚¤‚ÉA%CALLNAME:TARGET%‚Í‚«‚Â‚­’÷‚ß‚ ‚°‚é‰‚ß‚Ä‚ÌäS“à‚ÌA‚Ü‚¾ó‚­‚Ù‚®‚ê‚«‚ê‚Ä‚È‚¢‰œ‚Ì‰œ‚Öµ‚«“ü‚ê‚æ‚¤‚Æ˜‚ð—h‚³‚Ô‚Á‚ÄA‚æ‚èŒ‹‡‚ð–§’…‚³‚¹‚æ‚¤‚Æ‚µ‚Ä‚¢‚½B
+			PRINTFORMW u‚à‚Á‚Æ‚§A‚à‚Á‚Æ‚§ccv
+			PRINTFORMW u‚Ë‚¥AŽ„‚ª‰‚ß‚Ä‚¾‚©‚çA­‚µ‹x‚ñ‚Å‚é‚ÌccH@—D‚µ‚¢‚È‚Ÿcc‚Í‚ŸA‚Å‚àA¡‚ÌA¡‚ÌŽ„‚ÉSŒ­‚¢‚ð‚·‚é‚È‚çcc‚à‚Á‚ÆA“®‚¢‚ÄA‚à‚Á‚ÆAŒƒ‚µ‚­‚µ‚Äccv
+			PRINTFORMW u‚¹[‚µA‚¹‚¢‚¦‚«A‚Ç‚Õ‚Ç‚Õ‚µ‚Ä‚­‚¾‚³‚¢cc’†‚ÌA‰œ‚ÌA‚¨‚­‚ÅA‚Ñ‚ã[‚Ñ‚ã[‚­‚¾‚³‚¢ccv
+			PRINTFORMW ‹‚ß‚ÌŒ¾—t‚ð‚ ‚è‚Ì‚Ü‚Ü‚É‚·‚é‚©‚Ì‚æ‚¤‚ÉA%CALLNAME:TARGET%‚Ì’†‚ª•sŠµ‚ê‚³‚ðŠ´‚¶‚³‚¹‚È‚¢‚æ‚¤‚ÉA%CALLNAME:MASTER%‚ð_‚ç‚©‚­•ï‚Ýž‚Ý‚Í‚¶‚ß‚éB
+			PRINTFORMW %CALLNAME:MASTER%‚ÍA%CALLNAME:TARGET%‚ª–]‚Þ‚ª‚Ü‚Ü‚ÌƒZƒbƒNƒX‚ðŠ‚¦‚é‚æ‚¤‚ÉA‹­‚­˜‚ð–§’…‚³‚¹‚½B
+			CALL SET_CEVENT("”j‰ZF‹–‚³‚ê‚½‘rŽ¸")
+		;ðŒ‚ð–ž‚½‚µ‚Ä‚¢‚È‚¢ê‡A‚ê‚¢‚Û‚£”j‰Z‚É‚È‚è‚Ü‚·B‚à‚Á‚Æ‚àAˆú–‚‚È‚Ì‚Å«“I‚ÈŠoÁ‚Í‚æ‚è‘‚­‚È‚é‚©‚à‚Å‚·‚ª
+		ELSEIF CEVENT("”j‰ZFƒ}ƒmƒ“‚ðƒŒƒCƒv‚·‚é") && CEVENT("ˆú–‚ŠoÁFƒ}ƒmƒ“") == 0
+			PRINTFORMW 
 		ELSE
 			PRINTFORMW 
 		ENDIF
@@ -3305,6 +3338,88 @@ ENDIF
 SIF TEQUIP:Œûžg && SELECTCOM != 135
 	RETURN 0
 
+IF SELECTCOM >= 60 && SELECTCOM <= 69 && TALENT:TARGET:ˆ— && CEVENT("ˆú–‚ŠoÁFƒ}ƒmƒ“") == 0
+	PRINTFORML u‚¾A‚¾‚ßA‚¾‚ß‚Å‚·I@‚¨‚¿‚ñ‚Û‰Ÿ‚µ•t‚¯‚Ä‚é‚Ì‚¾‚ß‚ÁIv
+	REPEAT 5
+		SELECTCASE COUNT
+			CASE 0
+			PRINTFORML [1] “ü‚ê‚½‚¢‚Æ‚³‚³‚â‚­
+			PRINTFORML [2] “ü‚ê‚é‚Ì‚ð‰ä–‚·‚éB
+			INPUT
+			IF RESULT == 1
+				CONTINUE
+			ELSEIF RESULT == 2
+				TFLAG:ƒRƒ}ƒ“ƒhƒLƒƒƒ“ƒZƒ‹ = 1
+				RETURN 0
+				BREAK
+			ENDIF
+			CASE 1
+			PRINTFORMW u‚¾A‚¾‚ß‚Å‚·‚ÁI@‚³AÅ‰‚É‚¨Šè‚¢‚µ‚Ü‚µ‚½‚æ‚ÁIv
+			PRINTFORML [1] Šo‚¦‚Ä‚È‚¢
+			PRINTFORML [2] ‚â‚Þ‚ð‚¦‚È‚¢‚Ì‚Å‰ä–‚·‚é
+			INPUT
+			IF RESULT == 1
+				CONTINUE
+			ELSEIF RESULT == 2
+				TFLAG:ƒRƒ}ƒ“ƒhƒLƒƒƒ“ƒZƒ‹ = 1
+				RETURN 0
+				BREAK
+			ENDIF
+			CASE 2
+			PRINTFORMW u‚Ð‚ÁA‚Ð‚Ç‚¢‚Å‚·‚ÁI@‚»‚¤‚¢‚¢‚È‚ª‚çæ‚ð‰Ÿ‚µž‚Ü‚È‚¢‚Å‚­‚¾‚³‚¢‚ÁIv
+			PRINTFORML [1] ‚à‚Ì‚·‚²‚­“ü‚ê‚½‚¢
+			PRINTFORML [2] ‚©‚í‚¢‚»‚¤‚È‚Ì‚Å‰ä–‚·‚é
+			INPUT
+			IF RESULT == 1
+				CONTINUE
+			ELSEIF RESULT == 2
+				TFLAG:ƒRƒ}ƒ“ƒhƒLƒƒƒ“ƒZƒ‹ = 1
+				RETURN 0
+				BREAK
+			ENDIF
+			CASE 3
+			PRINTFORMW u‚»A‚»‚ñ‚È‚ÉA‚»‚ñ‚È‚É“ü‚ê‚½‚¢‚ñ‚Å‚·‚©cc‚ÁB‚¨A‚¨Œû‚Å‚àA‚¨‚Á‚Ï‚¢‚Å‚àŽË¸‚µ‚Ä‚¢‚¢‚Å‚·‚©‚çA‚©A‚¨‚Ü‚ñ‚±‚Í‚Ÿ‚Áv
+			PRINTFORML [1] ‚à‚¤–³—A“ü‚ê‚éI
+			PRINTFORML [2] ‚¿‚á‚ñ‚Æ•òŽd‚µ‚ë‚Æ”O‚ð‰Ÿ‚µ‚Ä‰ä–‚·‚é
+			INPUT
+			IF RESULT == 1
+				CONTINUE
+			ELSEIF RESULT == 2
+				TFLAG:ƒRƒ}ƒ“ƒhƒLƒƒƒ“ƒZƒ‹ = 1
+				RETURN 0
+				BREAK
+			ENDIF
+			CASE 4
+			PRINTFORMW u‚Ð‚ÁA‚¬A‚ ‚ÁA‚ÍA‚â‚ŸA’É‚¢A’É‚¢’É‚¢“ü‚è‚©‚¯‚Ä‚Ü‚·A‚µ‚åAˆ—–Œ‚ª‚ŸI@‚â‚ß‚ÄA‚à‚¤‚â‚ß‚ÄIv
+			PRINTFORML [1] Ž~‚ß‚ç‚ê‚È‚¢AÅ‰œ‚Ü‚Å“Ë‚«“ü‚ê‚½‚¢I
+			PRINTFORML [2] ’É‚Ü‚µ‚¢‚Ì‚Å‰ä–‚·‚é
+			INPUT
+			IF RESULT == 1
+				BREAK
+			ELSEIF RESULT == 2
+				TFLAG:ƒRƒ}ƒ“ƒhƒLƒƒƒ“ƒZƒ‹ = 1
+				RETURN 0
+				BREAK
+			ENDIF
+		ENDSELECT
+	REND
+	PRINTFORMW u‚¢A‚¢‚â‚ ‚ ‚ ‚ ‚ II@‚¢‚ÁA‚¬A‚ ‚ ‚ ‚ IIIv
+	PRINTFORMW %CALLNAME:TARGET%‚ÌA”j‰Z‚ÌŒƒ’É‚Ìâ‹©‚ð‰Ÿ‚µ‚Ì‚¯‚é‚æ‚¤‚ÉAÅ‰œ‚ð“Ë‚«ã‚°‚½B
+	PRINTFORMW u‚ ‚ÁA‚Í‚Ÿ‚ÁA‚Í‚Ÿ‚ÁA‚Á‚­A‚Á‚Áv
+	PRINTFORM ‘§‚àâ‚¦â‚¦‚É‚±‚ç‚¦‚é%CALLNAME:TARGET%‚Ì’†‚ÍA
+	IF TALENT:MASTER:“¶’å
+		PRINTFORMW ˆêu‚Åª–{‚©‚ç¸Žq‚ª‘k‚é‚Ù‚Ç‚ÌA‹·‚³‚ÆŠ´G‚ÆA‚Ê‚ß‚è‚Æ‰·‚©‚³‚ÅA%CALLNAME:MASTER%‚ð•ï‚Ýž‚ñ‚Å‚¢‚½B
+	ELSE
+		PRINTFORMW ¡‚Ü‚Å‚ÉŠ´‚¶‚½‚±‚Æ‚Ì‚È‚¢‹­—ó‚ÈŽhŒƒ‚Ì‚ ‚é‚´‚ç‚Â‚«‚ÆA‚Ê‚ß‚è‚ÆA‚«‚Â‚³‚ÅA%CALLNAME:MASTER%‚ðŒ}‚¦‚½B
+	ENDIF
+	PRINTFORMW u‚¾‚ß‚¥A”²‚¢‚ÄA‚Ê‚¢‚Ä‚¥cc‚Áv
+	PRINTFORMW %CALLNAME:TARGET%‚Ì”ß–Â‚Ì‚æ‚¤‚ÈŽå’£‚ð‰Ÿ‚µ‚Â‚Ô‚·‚æ‚¤‚ÉA–c‘å‚É–c‚êã‚ª‚é—~–]‚ð’@‚«‚Â‚¯‚é‚æ‚¤‚É˜‚ð‰Ÿ‚µ‚½B
+	PRINTFORMW ‚»‚ê‚±‚»A”Þ—‚Ì–]‚Þ’Ê‚èAuäS“à‚Åv”²‚­‚½‚ß‚ÉB
+	CFLAG:TARGET:DŠ´“x -= 60
+
+	CALL SET_CEVENT("”j‰ZFƒ}ƒmƒ“‚ðƒŒƒCƒv‚·‚é")
+ENDIF
+
 ;-------------------------------------------------
 ;’²‹³ƒRƒ}ƒ“ƒhI—¹Žž‚És‚¤‹¤’Êˆ—B“Á‚É‚È‚­‚Æ‚à‚æ‚¢
 ;-------------------------------------------------
@@ -3693,8 +3808,20 @@ RETURN 0
 IF TALENT:—ö•ç
 	PRINTFORMW 
 ;‚»‚êˆÈŠO
-ELSE
-	PRINTFORMW 
+ELSEIF FIRST_EV("â’¸F‚u’†o‚µ") == 0 && CEVENT("”j‰ZFƒ}ƒmƒ“‚ðƒŒƒCƒv‚·‚é") && INSERT("‚uƒCƒ“ƒT[ƒg")
+	;‰ƒZƒbƒNƒX‚Ì‰ŽË¸‚Íˆ—‘rŽ¸‚Ì‚Í‚¸‚Å‚ ‚éBƒ}ƒmƒ“ƒŒƒCƒvƒtƒ‰ƒO“ü‚è‚Ìê‡‹–‰Â‚³‚ê‚Ä‚¢‚È‚¢‚Í‚¸B
+	;‚à‚Á‚Æ‚àAƒ}ƒmƒ“‚Ì‚ ‚Ì‚¨‚Ü‚ñ‚Ü‚ñ‚ð‘O‚ÉADT‚ª‚±‚±‚ð“¥‚ß‚é‚Ì‚¾‚ë‚¤‚©
+	PRINTFORMW uIHv
+	PRINTFORMW ŒoŒ±‚Ì”–‚¢%CALLNAME:TARGET%‚É‚àA%CALLNAME:MASTER%‚Ì“®‚«‚Ì•Ï‰»‚ªŽË¸‚Ì‹ß‚³‚ð—\‘ª‚³‚¹‚½B
+	IF TEQUIP:PLAYER:ƒRƒ“ƒh[ƒ€ == 0
+		PRINTFORMW u‚ A‚ ‚ÌA‚Ü‚³‚©A‚Ü‚³‚©ccv
+		PRINTFORMW ¡äS‰œ‚É–§’…‚·‚é—éŒû‚É‚Í‚È‚ñ‚Ìá‚è‚à‚È‚¢B
+		PRINTFORMW u‚¾A‚¾‚ß‚ÁI@ŽË¸‚·‚é‚È‚ç”²‚¢‚ÄI@ŠO‚Éo‚µ‚Ä‚ÁI@’†‚ÍA‚È‚©‚Í‚Ÿv
+		PRINTFORMW %CALLNAME:TARGET%‚à‚ª‚­‚æ‚¤‚É˜‚ð—h‚³‚Ô‚é‚ªA‹·‚³‚É[‚­‘}‚µ‚±‚Ü‚ê‚½Œ‹‡‚ð‰x‚Î‚¹‚é‚¾‚¯‚¾‚Á‚½B
+	ELSE
+		PRINTFORMW u‚¤A‚¤‚¤‚ñcc‚¢A‚¢‚¢‚Å‚·‚©‚çA‚»A‚»‚Ì‚Ü‚Ü‚Å‚àA‚¢‚¢‚Å‚·‚©‚çA‘‚­ccI‚í‚ç‚¹‚Ä‚­‚¾‚³‚¢ccv
+		PRINTFORMW ‚Æ‚É‚©‚­‘‚­I‚í‚ç‚¹‚½‚ª‚é‚»‚Ô‚è‚ðŒ©‚¹‚½B
+	ENDIF
 ENDIF
 
 ;-------------------------------------------------
