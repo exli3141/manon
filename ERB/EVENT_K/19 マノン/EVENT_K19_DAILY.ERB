@@ -25,7 +25,7 @@ CASE "挨拶する"
 CASE "一番乗り"
 
 CASE "ただいま"
-	IF CFLAG:淫魔覚醒
+	IF CEVENT("淫魔覚醒：マノン")
 		PRINTFORMW 「ただいまもどりました、%CALLNAME:MASTER%。%TEXTR("今日もお疲れ様/いつもお疲れ様/少し、待ち遠しかった/待ってた……よ？/ね、今日も……する？")%」
 	ELSE
 		PRINTFORMW 「た、た、ただいま、%CALLNAME:MASTER%。あの、%TEXTR("おつかれ、じゃないです？/えと、その、うぅ……(言葉に詰まる)！/お、おつかれさまです！/え、えと……その、します？　あ、あの、もちろん入れちゃ嫌ですよっ！")%」
@@ -33,7 +33,7 @@ CASE "ただいま"
 CASE "既に入室"
 	;家で出迎えてくれる時
 	IF COND("夜")
-		IF CFLAG:淫魔覚醒
+		IF CEVENT("淫魔覚醒：マノン")
 			PRINTFORMW 「おかえりなさい、%TEXTR("今日もお疲れ様/いつもお疲れ様/少し、待ち遠しかった/待ってた……よ？/ね、今日も……する？")%」
 		ELSE
 			PRINTFORMW 「あの、お、お、%TEXTR("おかえりなさい！/お、おかえりなさい！/おかえりください！　って、ああ何言ってるのっ/お待ちして……ってそんなえっちじゃないからっ！/お、お、おおぉぉ……あれ？")%」
@@ -62,7 +62,8 @@ MEMO_LINECOUNT = LINECOUNT
 SELECTCASE ARGS
 ;初回のセリフ
 CASE "初回台詞"
-	PRINTFORML 
+	PRINTFORML 「あ、あ、ありがとうございます……私、家事とかでｋ……そういえば、メイドが……むぅ」
+	PRINTFORML 気づくと押し黙ってしまった。	
 CASE "汗だく"
 	PRINTFORML 
 CASE "寝起き"
@@ -147,6 +148,12 @@ SIF LINECOUNT > MEMO_LINECOUNT
 ;	CALL SET_DAILY_EV, "質問２"
 ;ENDIF
 
+IF CEVENT("破瓜：マノンをレイプする") && DAILY_EV("破瓜レイプ直後") == 0 && CEVENT("淫魔覚醒：マノン") == 0
+	PRINTFORML 「っ……！　嫌だって、嫌だっていったのに……どうして……どうして……だめって言っても、止めてくれなくて、なんだか私、おかしく……」
+	PRINTFORML 怒り心頭なはずの抗議の言葉に、言うほどの憎悪を感じないのが不思議だった。
+	CALL SET_DAILY_EV, "破瓜レイプ直後"
+ENDIF
+
 ;何か発言してたらここまで
 SIF LINECOUNT > MEMO_LINECOUNT
 	RETURN 1
@@ -164,8 +171,28 @@ SIF LINECOUNT > MEMO_LINECOUNT
 
 ;時間帯と場所と関係で変化有り
 IF COND("夜")
+	IF CEVENT("破瓜レイプ刺激排卵") && TALENT:TARGET:妊娠しづらい <= 1
+		;妊娠しづらいを元に戻す。
+		PRINTFORML 「あんなに、あんなにだめって言ったのに……どうして、どうして……やだ、私何か、変、嫌なのに、嫌、なのに……」
+		PRINTFORML %CALLNAME:TARGET%はこの世の破滅のような表情でうつむいているそぶりでつぶやくが、言うほど崩壊していないように見えるのが不思議だった。
+		CALL DEL_CEVENT, "破瓜レイプ刺激排卵"
+		TALENT:TARGET:妊娠しづらい = 2
+	ELSE
+	IF CEVENT("淫魔覚醒：マノン")
+		PRINTFORML %CALLNAME:TARGET%は%TEXTR("じっとあなたを熱っぽいまなざしで見つめている/その手にあふれんばかりの乳房の位置を直している/指先で唇をゆっくりなぞっている/しっとりとした唇を指さして流し目を送っている/ボタンのはじけたブラウスに透ける先端を見せつけた")%
+	ELSE
+		PRINTFORML %CALLNAME:TARGET%は%TEXTR("じっとあなたを警戒するまなざしで見つめている/その手にあふれんばかりの乳房の位置を直している/あなたとメイドのやり取りを見つめている/内またの居座りを直している/サイズの合わないブラウスの、はじけたボタンの位置を締めようとしている")%
+	ENDIF
+	ENDIF
 	PRINTFORML 
 ELSE
+	IF CEVENT("破瓜レイプ刺激排卵") && TALENT:TARGET:妊娠しづらい <= 1
+		;妊娠しづらいを元に戻す。
+		PRINTFORML 「あんなに、あんなにだめって言ったのに……どうして、どうして……やだ、私何か、変、嫌なのに、嫌、なのに……」
+		PRINTFORML %CALLNAME:TARGET%はこの世の破滅のような表情でうつむいている
+		CALL DEL_CEVENT, "破瓜レイプ刺激排卵"
+		TALENT:TARGET:妊娠しづらい = 2
+	ENDIF
 	PRINTFORML 
 ENDIF
 
@@ -234,23 +261,49 @@ CASE "起こす"
 CASE "トーク"
 	SELECTCASE STR:日常イベント名
 	CASE "褒める"
-		PRINTFORMW 
+	IF CEVENT("淫魔覚醒：マノン")
+		PRINTFORMW 「%TEXTR("もう、穴までほめるって言うの本当にしちゃうんだね……/そんなに褒めるなら揉んでく……？（たゆん/わかってるね……うん、うれしいなぁ/そりゃもう、サキュバスだもの。ね、その名器で、今日もたくさん気持ちよくなろうね/あー、えっと、うん、なんかこう……改めて言われると、ちょっと照れるね")%」
+	ELSE
+		PRINTFORMW 「あ、あの……%CALLNAME:MASTER%。あの」
+		PRINTFORMW 思った以上に喜んでいるようだ。
+	ENDIF
 	CASE "甘い言葉"
-		IF TALENT:恋慕
-			PRINTFORMW 
-		ELSEIF CALCF("甘い言葉成功")
-			PRINTFORMW 
+	IF CEVENT("淫魔覚醒：マノン")
+		IF CALCF("甘い言葉成功")
+			PRINTFORMW 「もう……そんなに私のお腹の奥を熱くしたいの……？」
+			PRINTFORMW 「いろいろわかってるじゃないの……うん、はぁ……」
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「もう……そうじゃないでしょう」
+			PRINTFORMW 「もっとこう、%TEXTR("がつーんとお腹の奥を熱くするような/じゅんんって内またがぬめるような/心の底から欲しくなるような")%一言じゃなくちゃ」
 		ENDIF
+	ELSE
+		IF CALCF("甘い言葉成功")
+			PRINTFORMW 「……！！　あ、えと、あ、う、うぅ……」
+			PRINTFORMW 驚いているようだがいろいろ反応は正直である。
+		ELSE
+			PRINTFORMW 「な、な、なに、何言ってんの、そんな、むぅ」
+			PRINTFORMW 驚いているというよりは、いぶかしんでいるようだ。
+		ENDIF
+	ENDIF
 	CASEELSE
+	IF CEVENT("淫魔覚醒：マノン")
 		IF RAND:3 == 0
-			PRINTFORMW 
+			PRINTFORMW 「純正の淫魔だけど、別に人間を淫魔化するだけが種を増やす方法じゃないよ？　その……%CALLNAME:MASTER%なら……って、そういうのはまた今度ね」
 		ELSEIF RAND:2
-			PRINTFORMW 
+			PRINTFORMW 「あなたのそばにいるメイド……魂を狩る悪魔だっけ？　知らないわけじゃないけど……住む世界が違うっていうか、種そのものが違うっていうか……あー、思い出せない」
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「せーしとせーえきってどっちがえっちな呼び方だろうね……？　私的にはちゃんと種を残せるほうだと思うけど……」
 		ENDIF
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「わ、私、その」
+			PRINTFORMW すこし吃音の気があるらしい。
+		ELSEIF RAND:2
+			PRINTFORMW 「その、私……すごく嫌ってわけじゃないから」
+		ELSE
+			PRINTFORMW 「え、えと、なんでもするので、がんばります……」
+		ENDIF
+	ENDIF
 	ENDSELECT
 
 CASE "汗を拭く"
@@ -264,8 +317,8 @@ CASE "もてなす"
 	SELECTCASE STR:日常イベント名
 	CASE "おっぱいリフトする"
 		PRINTFORMW 
-		IF CFLAG:淫魔覚醒
-			PRINTFORMW 「あら……%TEXTR("んふ……とても楽ですよ/はふっ！？　え、いえっくすぐったくてっ/うひゃぁ、これいいわ……/はぁん……持ち上げるだけじゃなくて、ね/ふぁぁ……ね、もっとしっかり包み込んでほしい……")%」
+		IF CEVENT("淫魔覚醒：マノン")
+			PRINTFORMW 「あら……%TEXTR("んふ……とても楽。やっぱりこんな大きさだし……/はふっ！？　え、いえっくすぐったくてっ/うひゃぁ、これいいわ……/はぁん……持ち上げるだけじゃなくて、ね/ふぁぁ……ね、もっとしっかり包み込んでほしい……/あはぁ、なんかいいんだけど……もっとこう、先の方に絞ってみて……/んふ……/持ち上げるだけでいいの？　ね、もっとこう、がっしと鷲塚むように/はぁぁ……")%」
 			PRINTFORMW %CALLNAME:TARGET%は%CALLNAME:MASTER%の掌の感触を愉しんでいるようだ。
 		ELSE
 			PRINTFORMW 「あの、お、お、%TEXTR("おおっ！　な、何してるんですかっ！！/お、おっぱい触るのだめぇ！/っ、そういうのいきなり禁止！/おぉ、それおっぱいですよっ！/お、お、おおぉぉ……いやぁああああ！！")%」
