@@ -18,6 +18,8 @@
 ;１、超危険日に破瓜する。(淫魔らしいことをしてこなかった罰のようなものです)
 ;２、マノンに本気で子を宿したいと思わせる（相思相愛などいくつかの条件が必要になります。
 ;３、波長の合う日に子宮を犯す。(月経とは別の、淫魔としての宿せるタイミングがあるのです)
+;４、おっぱい揉みながらのセックスはラグジャラスヒットします。中出しした場合はもう一回ラグジャラスヒットします。
+;　　おっぱい以外をそのタイミングで弄っている場合は発生しません。
 ;
 ;マノンは当初えっちに二の足を踏む状態です（一度貫けばヒニン不要で危険日っクスもできるとか淫魔らしいところはありますが）
 ;ただ、精液中毒5lvか屈服刻印Lv3、あるいは恋慕や淫乱をつけることで子宮の渇望に耐えられなくなり、
@@ -122,6 +124,7 @@ CASE "勧誘直後"
 CASE "出現条件"
 	PRINTFORMW %NAME:ARG%は居候として "同棲中" となります。
 	PRINTFORMW しかし入学手続きはしていないので部室には来ることが出来ません。
+	PRINTFORMW そもそも入学を必要とする年齢かどうかが気になる見た目ですが……
 ENDSELECT
 
 ;-------------------------------------------------
@@ -167,7 +170,7 @@ IF CEVENT("調教開始：初調教") == 0
 	PRINTFORML ただ、元来が淫魔なので本気な頑なさではないはずです……
 	PRINTFORML 精子と精液の味をしっかり覚えさせ、しっかり屈服させるか、あるいは伴侶として認められればあるいはと思いますが……強引に迫っても意外と大丈夫かもしれません。
 	PRINTFORML ご武運を！
-	PRINTFORML 
+	PRINTFORMW 
 	CALL SET_CEVENT, "調教開始：初調教"
 ;-------------------------------------------------
 ;調教開始時（一回のみ）
@@ -261,10 +264,11 @@ ELSE
 	ELSE
 	    PRINTFORMW ※%CALLNAME:TARGET%がセックスに完全におぼれました。
 	ENDIF
-	PRINTFORMW ※%CALLNAME:TARGET%が淫魔として覚醒しました。
+	PRINTFORML ※%CALLNAME:TARGET%が淫魔として覚醒しました。
+	PRINTFORMW 自分らしい自分をはっきり理解し受け入れたため、性格面で大きな自信がついたようです。
 	CALL SET_CEVENT("淫魔覚醒：マノン")
 	TALENT:TARGET:一線越えない = 0
-	CSTR:TARGET:肩書 = "覚醒した淫魔"
+	CSTR:TARGET:肩書 = 覚醒した淫魔
 	RETURN 1
 ENDIF
 
@@ -506,9 +510,25 @@ IF SELECTCOM == 5
 		PRINTFORMW 
 	;二回目以降
 	ELSE
-		;恋慕
-		IF TALENT:恋慕
-			PRINTFORMW 
+		;覚醒マノン＆Ｖインサート中にお胸弄る
+		IF CEVENT("淫魔覚醒：マノン") && INSERT("Ｖインサート")
+			PRINTFORML 
+			PRINTFORML 
+
+			SETCOLOR DEF_COLOR("ハートピンク")
+
+			PRINTFORML ＜ラグジャラスヒット！＞
+			PRINTFORMW %COND("お気に入りの体位中") ? "お気に入り体位で入れられながらの胸愛撫に" # "入れられながらの胸愛撫に"%%CALLNAME:TARGET%は恍惚としている……
+
+			NOWEX:ラグジャラスヒット = 1
+			EX:ラグジャラスヒット += 1
+
+			;中出しを合わせたら2.25倍
+			TIMES CUP:Ｖ潤, 1.50
+			TIMES CUP:欲情, 1.50
+			TIMES CUP:屈服, 1.50
+			TIMES CUP:恥情, 1.50
+
 		;それ以外
 		ELSE
 			PRINTFORMW 
@@ -735,13 +755,15 @@ IF SELECTCOM == 13
 	;初めて
 	IF FIRSTCOM(SELECTCOM) == 0
 		IF CEVENT("淫魔覚醒：マノン")
-			PRINTFORMW 
+			PRINTFORMW 「見てみたいんだ、この奥……」
+			PRINTFORMW 「いいよ、とてもあなたを欲しがってる私の奥の奥、じっくり見て……」
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「……っ！！　な、な、っ、う……ううん、だめじゃないよ……」
+			PRINTFORMW 「やだ……そんなに、そんなに見るの……っ」
+			PRINTFORMW 抗議する割には、言った通りに応じてくれている。			
 		ENDIF
 	;二回目以降
 	ELSE
-		;恋慕
 		IF CEVENT("淫魔覚醒：マノン")
 			PRINTFORMW 「%TEXTR("どう……？　ひくひくしてるでしょ、ここ……/ふふ、そんなにじっと見られたらじゅぶじゅぶになっちゃいます/見てみて……もう食べごろですよ、いつでもずんっってしてくださいね/あはぁ……くぱってしたら入ってるの思い出しちゃった……/ね、見てるだけじゃなくて、口づけもしてください……上でも、下でもいいからぁ/あぁん……これじらされてる感じでうずうずする……")%」
 		ELSE
@@ -3855,6 +3877,8 @@ ELSEIF FIRST_EV("絶頂：Ｖ中出し") == 0 && CEVENT("破瓜：マノンをレイプする") && 
 		PRINTFORMW 「う、ううん……い、いいから、そ、そのままでも、いいから、早く……終わらせて……」
 		PRINTFORMW とにかく早く終わらせたがるそぶりを見せた。
 	ENDIF
+ELSE
+	PRINTFORMW
 ENDIF
 
 ;-------------------------------------------------
@@ -3974,13 +3998,32 @@ ELSEIF SHOOT("手")
 ELSEIF SHOOT("Ｖ中出し")
 	;初めて
 	IF FIRST_EV("絶頂：Ｖ中出し") == 0
+	;破瓜れいぽぅ
 		PRINTFORMW 
-	;恋慕
-	ELSEIF TALENT:恋慕
-		PRINTFORMW 
-	;屈服刻印Lv3
-	ELSEIF MARK:屈服刻印 == 3
-		PRINTFORMW 
+	;許され破瓜
+	;非破瓜の日に初中出し
+	;覚醒マノン
+	ELSEIF CEVENT("淫魔覚醒：マノン")
+		IF SELECTCOM == 5
+			PRINTFORML 
+			PRINTFORML 
+
+			SETCOLOR DEF_COLOR("ハートピンク")
+
+			PRINTFORML ＜ラグジャラスヒット！＞
+			PRINTFORMW %COND("お気に入りの体位中") ? "お気に入り体位で胸を愛撫されながらの膣内射精に、" # "胸を愛撫されながらの膣内射精で、"%%CALLNAME:TARGET%はこの上ない幸福感におぼれている……
+
+			NOWEX:ラグジャラスヒット = 1
+			EX:ラグジャラスヒット += 1
+
+			;乳揉みっクス合計で2.25倍
+			TIMES CUP:Ｖ潤, 1.50
+			TIMES CUP:欲情, 1.50
+			TIMES CUP:屈服, 1.50
+			TIMES CUP:恥情, 1.50
+		ELSE
+			PRINTFORMW 
+		ENDIF
 	;それ以外
 	ELSE
 		PRINTFORMW 
