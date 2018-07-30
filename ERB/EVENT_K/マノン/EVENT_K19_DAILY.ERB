@@ -10,12 +10,7 @@ SELECTCASE ARGS
 CASE "挨拶する"
 	SELECTCASE CSTR:ARG:朝駆け
 	CASE "朝フェラ"
-	IF CEVENT("淫魔覚醒：マノン", ARG)
-		PRINTFORMW 「んふ……　\@　CALLNAME:MASTER ！= "あなた" ? 、 %CALLNAME:MASTER% # \@。 %TEXTR("おはよう……/おはよ、びっくりした……？/おはよう、こういう起こされ方もたまにはいいでしょ？/ん、ふ……ちゅ、んんっ/おはよ、ぅ……んちゅ")%」
-	ELSE
-		PRINTFORMW 「\@　CALLNAME:MASTER ！= "あなた" ? 、 %CALLNAME:MASTER%、 # \@ あの、%TEXTR("べ、べつにせーしなんて……んむっ/んっ、ちゅ、ちゅば/こ、こうしなきゃ、辛そうだから/はぁ、んむっ、ちゅ")%」
-		PRINTFORMW 素直さのない悪態に聞こえるが、だいぶ熱心な口淫を続けていた。
-	ENDIF
+
 	ENDSELECT
 
 	;何か発言してたらここまで
@@ -31,9 +26,9 @@ CASE "一番乗り"
 
 CASE "ただいま"
 	IF CEVENT("淫魔覚醒：マノン", ARG)
-		PRINTFORMW 「ただいまもどりました～　\@　CALLNAME:MASTER ！= "あなた" ? 、 %CALLNAME:MASTER% # \@。 %TEXTR("今日もお疲れ様/いつもお疲れ様/少し、待ち遠しかった/待ってた……よ？/ね、今日も……する？")%」
+		PRINTFORMW 「ただいまもどりました\@ CALLNAME:MASTER != "あなた" ? 、%CALLNAME:MASTER% # \@。%TEXTR("今日もお疲れ様/いつもお疲れ様/少し、待ち遠しかった/待ってた……よ？/ね、今日も……する？")%」
 	ELSE
-		PRINTFORMW 「た、た、ただいま\@　CALLNAME:MASTER ！= "あなた" ? 、 %CALLNAME:MASTER% # \@。 あの、%TEXTR("おつかれ、じゃないです？/えと、その、うぅ……(言葉に詰まる)！/お、おつかれさまです！/え、えと……その、します？　あ、あの、もちろん入れちゃ嫌ですよっ！")%」
+		PRINTFORMW 「た、た、ただいま、\@ CALLNAME:MASTER != "あなた" ? 、%CALLNAME:MASTER% # \@。あの、%TEXTR("おつかれ、じゃないです？/えと、その、うぅ……(言葉に詰まる)！/お、おつかれさまです！/え、えと……その、します？　あ、あの、もちろん入れちゃ嫌ですよっ！")%」
 	ENDIF
 CASE "既に入室"
 	;家で出迎えてくれる時
@@ -183,11 +178,11 @@ IF COND("夜")
 		CALL DEL_CEVENT, "破瓜レイプ刺激排卵"
 		TALENT:妊娠しづらい = 2
 	ELSE
-		IF CEVENT("淫魔覚醒：マノン")
-			PRINTFORML %CALLNAME:TARGET%は%TEXTR("じっとあなたを熱っぽいまなざしで見つめている/その手にあふれんばかりの乳房の位置を直している/指先で唇をゆっくりなぞっている/しっとりとした唇を指さして流し目を送っている/ボタンのはじけたブラウスに透ける先端を見せつけた")%
-		ELSE
-			PRINTFORML %CALLNAME:TARGET%は%TEXTR("じっとあなたを警戒するまなざしで見つめている/その手にあふれんばかりの乳房の位置を直している/\@ FIND_COND("フェリシエル", "現在存在") ? あなたとメイドのやり取りを見つめている # あなたのことをじっと見つめている\@/内またの居座りを直している/サイズの合わないブラウスの、はじけたボタンの位置を締めようとしている")%
-		ENDIF
+	IF CEVENT("淫魔覚醒：マノン")
+		PRINTFORML %CALLNAME:TARGET%は%TEXTR("じっとあなたを熱っぽいまなざしで見つめている/その手にあふれんばかりの乳房の位置を直している/指先で唇をゆっくりなぞっている/しっとりとした唇を指さして流し目を送っている/ボタンのはじけたブラウスに透ける先端を見せつけた")%
+	ELSE
+		PRINTFORML %CALLNAME:TARGET%は%TEXTR(@"じっとあなたを警戒するまなざしで見つめている/その手にあふれんばかりの乳房の位置を直している/\@ FIND_COND("フェリシエル", "現在存在") ? あなたとメイドのやり取りを見つめている # \@/内またの居座りを直している/サイズの合わないブラウスの、はじけたボタンの位置を締めようとしている")%
+	ENDIF
 	ENDIF
 	PRINTFORML 
 ELSE
@@ -197,12 +192,6 @@ ELSE
 		PRINTFORML %CALLNAME:TARGET%はこの世の破滅のような表情でうつむいている
 		CALL DEL_CEVENT, "破瓜レイプ刺激排卵"
 		TALENT:妊娠しづらい = 2
-	ELSE
-		IF CEVENT("淫魔覚醒：マノン")
-			PRINTFORML %CALLNAME:TARGET%は%TEXTR("じっとあなたを熱っぽいまなざしで見つめている/その手にあふれんばかりの乳房の位置を直している/指先で唇をゆっくりなぞっている/しっとりとした唇を指さして流し目を送っている/ボタンのはじけたブラウスに透ける先端を見せつけた")%
-		ELSE
-			PRINTFORML %CALLNAME:TARGET%は%TEXTR("じっとあなたを警戒するまなざしで見つめている/その手にあふれんばかりの乳房の位置を直している/あなたとメイドのやり取りを見つめている/内またの居座りを直している/サイズの合わないブラウスの、はじけたボタンの位置を締めようとしている")%
-		ENDIF
 	ENDIF
 	PRINTFORML 
 ENDIF
@@ -327,9 +316,8 @@ CASE "寝込みを襲う"
 CASE "もてなす"
 	SELECTCASE STR:日常イベント名
 	CASE "おっぱいリフトする"
-		PRINTFORMW 
 		IF CEVENT("淫魔覚醒：マノン")
-			PRINTFORMW 「あら……%TEXTR("んふ……とても楽。やっぱりこんな大きさだし……/はふっ！？　え、いえっくすぐったくてっ/うひゃぁ、これいいわ……/はぁん……持ち上げるだけじゃなくて、ね/ふぁぁ……ね、もっとしっかり包み込んでほしい……/あはぁ、なんかいいんだけど……もっとこう、先の方に絞ってみて……/んふ……/持ち上げるだけでいいの？　ね、もっとこう、がっしと鷲掴むように/はぁぁ……")%」
+			PRINTFORMW 「あら……%TEXTR("んふ……とても楽。やっぱりこんな大きさだし……/はふっ！？　え、いえっくすぐったくてっ/うひゃぁ、これいいわ……/はぁん……持ち上げるだけじゃなくて、ね/ふぁぁ……ね、もっとしっかり包み込んでほしい……/あはぁ、なんかいいんだけど……もっとこう、先の方に絞ってみて……/んふ……/持ち上げるだけでいいの？　ね、もっとこう、がっしと鷲塚むように/はぁぁ……")%」
 			PRINTFORMW %CALLNAME:TARGET%は%CALLNAME:MASTER%の掌の感触を愉しんでいるようだ。
 		ELSE
 			PRINTFORMW 「あの、お、お、%TEXTR("おおっ！　な、何してるんですかっ！！/お、おっぱい触るのだめぇ！/っ、そういうのいきなり禁止！/おぉ、それおっぱいですよっ！/お、お、おおぉぉ……いやぁああああ！！")%」
@@ -339,13 +327,7 @@ CASE "もてなす"
 			ENDIF
 		ENDIF
 	CASE "マッサージする"
-		IF CEVENT("淫魔覚醒：マノン")
-			PRINTFORMW 「あら……%TEXTR("んふ……とても具合い。やっぱりこんな大きさだし……/ありがと/ありがとう……はぁ、楽/ねぇ、肩だけで終わらないよね？/あー、もっと下のほう……そっち側じゃなくて/……/んふ……/そう、脇のあたりからすすっと、前に……/はぁぁ……")%」
-			PRINTFORMW %CALLNAME:TARGET%は%CALLNAME:MASTER%のマッサージを気に入っているようだが、どこか物足りなさそうだ。
-		ELSE
-			PRINTFORMW 「あの、あ、あ、%TEXTR("ありが、と……/あ、ありがと、こんなだから、肩がつらくて/あ、あの、肩だけだよね？/あ、えと、えと……うん、おっぱいまで触るのだめだからね/あっ、は……具合いい、ありがとう")%」
-			PRINTFORMW %CALLNAME:TARGET%は下心のないマッサージに浸っている。
-		ENDIF
+		PRINTFORMW 
 	CASE "キスする"
 		IF CSTR:PREV_DAILYCOM == STR:日常イベント名
 			PRINTFORMW 
@@ -360,42 +342,16 @@ CASE "もてなす"
 	CASE "しっぽをなでる"
 		;初めて
 		IF DAILY_EV(STR:日常イベント名) == 0
-			IF CEVENT("淫魔覚醒：マノン")
-				PRINTFORMW 「ふぁぁっ！？　んふ、やぁ、しっぽは敏感だから、優しく触ってね？」
-				PRINTFORMW %CALLNAME:TARGET%はぱたぱたと根本と掴まれた部位の間を跳ねさせて、感じた度合いを伝えてきていた。
-			ELSE
-				PRINTFORMW 「ひゃぁっ！？　あ、あ、あ、あの、しっぽ、しっぽだめ、びくびくするからっ！！」
-				PRINTFORMW %CALLNAME:TARGET%は背中をさすっていった悪寒をぶつけるかのようににらみつけてきた。
-			ENDIF
+			PRINTFORMW 
 		;連続実行
 		ELSEIF CSTR:PREV_DAILYCOM == STR:日常イベント名
-			IF CEVENT("淫魔覚醒：マノン")
-				PRINTFORMW 「うん、そんな、そんな、かんじ……んはぁ……はぁぁ」
-				PRINTFORMW %CALLNAME:TARGET%の言うとおりにしてやると頬がより紅潮し、今にも達したりするんじゃないかと思わせるほど感じ入っていた。
-			ELSE
-				PRINTFORMW 「やあああ！！　も、もうだめ！　もうやめて！！」
-				PRINTFORMW %CALLNAME:TARGET%は思いっきり平手でぶってきた。痛い。
-			ENDIF
+			PRINTFORMW 
 		;この時間で初実行
 		ELSEIF CHOSE_DAILY_EV(STR:日常イベント名) == 0 && RAND:2
-			IF CEVENT("淫魔覚醒：マノン")
-				PRINTFORMW 「んはっ！？　はぁ、びっくりした……んふ、いいよ、優しくさすってね？」
-				PRINTFORMW %CALLNAME:TARGET%は潤んだ目で、尻尾をつかむ%CALLNAME:MASTER%に上目遣いで訴えた。
-			ELSE
-				PRINTFORMW 「ひゃぁっ！？　あ、あ、あ、あの、しっぽ、しっぽだめ、やああ！！」
-				PRINTFORMW %CALLNAME:TARGET%はぞくぞくと背中を震わせる悪寒をぶつけるかのようににらみつけてきた。
-			ENDIF
+			PRINTFORMW 
 		ELSE
-			IF CEVENT("淫魔覚醒：マノン")
-				PRINTFORMW 「いいのぉ、尻尾感じちゃう……んふぁ、はぁぁ……ね、さすられてたら、我慢できなくなりそう……」
-				PRINTFORMW %CALLNAME:TARGET%の目に目覚めさせてはいけなさそうな情念をともしたように見えるが、気のせいだと信じたい。
-			ELSE
-				PRINTFORMW 「やあああ！！　も、もうだめ！　もうやめて！！」
-				PRINTFORMW %CALLNAME:TARGET%は思いっきり平手でぶってきた。痛い。
-			ENDIF
+			PRINTFORMW 
 		ENDIF
-	CASE "クンニ奉仕する"
-		PRINTFORMW 
 	CASEELSE
 		PRINTFORMW 
 	ENDSELECT
