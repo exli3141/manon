@@ -87,8 +87,8 @@ SELECTCASE ARGS
 CASE "紹介文"
 	PRINTFORML 選ばれし身体を持ってるのに、まったく活かせないでくすぶっている淫魔
 	PRINTFORML 精をむしって殺してしまうことを恐れ、破瓜の痛みを恐れている。
-	PRINTFORML そんな中、いくら精をむしって、魂すら奪ってしまっても死なないあなたに出会う。
-	PRINTFORML 淫魔落第で人間世界に追放されていたマノンは、彼に復権の望みを託すことに。
+	PRINTFORML そんな中、いくら精をむしって、魂すら奪ってしまっても死なない%CALLNAME:MASTER%に出会う。
+	PRINTFORML 淫魔落第で人間世界に追放されていた%NAME:ARG%は、\@ TALENT:MASTER:オトコ ? 彼 # 彼女 \@に復権の望みを託すことに。
 CASE "勧誘"
 	;PRINTFORML - %NAME:ARG% -
 	;%CNAMET(ARG, "二人称")%で呼称を出せる
@@ -191,7 +191,7 @@ IF CEVENT("調教開始：初調教") == 0
 	PRINTFORMW 「えっち、ですよね……私、淫魔なので本当は、したくてたまらないんです」
 	PRINTFORMW 「た、ただ、ただ、お願いですから……本番は、お、おまんこをおちんぽで貫くことは、しないでください……」
 	PRINTFORML 
-	IF ASSI & NO:ASSI == 1
+	IF ASSI && NO:ASSI == 1
 		;初調教のアドバイザがフェリ
 		PRINTFORMW 「かわいそ、サキュバスのくせに。%CNAMET(ASSI, "二人称")%の本番禁止なんてかわいそうすぎ」
 		PRINTFORMW 「ううううるさい、ですメイド」
@@ -204,8 +204,8 @@ IF CEVENT("調教開始：初調教") == 0
 	PRINTFORML ただ、元来が淫魔なので本気な頑なさではないはずです……
 	PRINTFORML 精子と精液の味をしっかり覚えさせ、しっかり屈服させるか、あるいは伴侶として認められればあるいはと思いますが……強引に迫っても意外と大丈夫かもしれません。
 	PRINTFORML 
-	PRINTFORML ご武運を！
-	PRINTFORMW 
+	PRINTFORMW ご武運を！
+
 	CALL SET_CEVENT, "調教開始：初調教"
 ;-------------------------------------------------
 ;調教開始時（一回のみ）
@@ -307,31 +307,37 @@ IF TALENT:相思相愛 && COND("排卵中")
 	ELSE
 		;そうでない場合に条件をシフトして口上を組む。
 		PRINTFORML
-		SIF CEVENT("マノンが孕める日")
-			PRINT さらに、
 		FOR LCOUNT, 1, CHARANUM
-			SELECTCASE NAME:LCOUNT
-			CASE "フェリシエル"
-				IF TALENT:LCOUNT:出産経験 > TALENT:TARGET:出産経験 || COND("妊娠イベント中", LCOUNT)
+			IF COND("フェリシエル", LCOUNT)
+				IF TALENT:LCOUNT:出産経験 > TALENT:出産経験 || COND("妊娠イベント中", LCOUNT)
+					SIF CEVENT("マノンが孕める日")
+						PRINT さらに、
 					PRINTFORMW 普段からつまらないことで突っかかり合うあのメイドへの対抗心から、%CALLNAME:TARGET%はどうしても子どもを授かりたくなった。
 					PRINTFORMW %CALLNAME:TARGET%は、自身の胎で受精卵を受け止めるための準備を万端にした！
 					CALL SET_CEVENT("孕みたがりマノン")
 				ENDIF
-			CASE "アリーヌ", "さくら", "メリィエーナ", "パラチネ", "槞彁"
-				IF COND("妊娠イベント中", LCOUNT) && (COND("同棲中", LCOUNT) || CSTR:TARGET:学年 == "学食のお姉さん")
+			ELSEIF COND("槞彁", LCOUNT)
+				IF COND("妊娠イベント中", LCOUNT) && (COND("同棲中", LCOUNT) || CSTR:学年 == "学食のお姉さん")
 					;対象が同棲しているか、自分が学食のお姉さんになっていなければ知らない。
 					;対象が妊娠イベント中でなければならない。
-					IF NAME:LCOUNT == "槞彁"
-						;おりかだけ友人判定。他はライバル判定。
-						PRINTFORMW %CALLNAME:TARGET%は仲の良い%CALLNAME:LCOUNT%の妊娠を知って、自分もどうしても授かりたくなった。
-						PRINTFORMW %CALLNAME:TARGET%は、自身の胎で受精卵を受け止めるための準備を万端にした！
-					ELSE
-						PRINTFORMW %CALLNAME:TARGET%は、あの%CALLNAME:LCOUNT%への対抗心に、自分もどうしても授かりたくなっていた。
-						PRINTFORMW %CALLNAME:TARGET%は、自身の胎で受精卵を受け止めるための準備を万端にした！
-					ENDIF
+					;おりかだけ友人判定。他はライバル判定。
+					SIF CEVENT("マノンが孕める日")
+						PRINT さらに、
+					PRINTFORMW %CALLNAME:TARGET%は仲の良い%CALLNAME:LCOUNT%の妊娠を知って、自分もどうしても授かりたくなった。
+					PRINTFORMW %CALLNAME:TARGET%は、自身の胎で受精卵を受け止めるための準備を万端にした！
 					CALL SET_CEVENT("孕みたがりマノン")
 				ENDIF
-			ENDSELECT
+			ELSEIF COND("アリーヌ", LCOUNT) || COND("さくら", LCOUNT) || COND("メリィエーナ", LCOUNT) || COND("パラチネ", LCOUNT)
+				IF COND("妊娠イベント中", LCOUNT) && (COND("同棲中", LCOUNT) || CSTR:学年 == "学食のお姉さん")
+					;対象が同棲しているか、自分が学食のお姉さんになっていなければ知らない。
+					;対象が妊娠イベント中でなければならない。
+					SIF CEVENT("マノンが孕める日")
+						PRINT さらに、
+					PRINTFORMW %CALLNAME:TARGET%は、あの%CALLNAME:LCOUNT%への対抗心に、自分もどうしても授かりたくなっていた。
+					PRINTFORMW %CALLNAME:TARGET%は、自身の胎で受精卵を受け止めるための準備を万端にした！
+					CALL SET_CEVENT("孕みたがりマノン")
+				ENDIF
+			ENDIF
 		NEXT
 	ENDIF
 ENDIF
@@ -632,7 +638,7 @@ IF SELECTCOM == 5
 			SETCOLOR DEF_COLOR("ハートピンク")
 
 			PRINTFORML ＜ラグジャラスヒット！＞
-			PRINTFORMW %COND("お気に入りの体位中") ? "お気に入り体位で入れられながらの胸愛撫に" # "入れられながらの胸愛撫に"%%CALLNAME:TARGET%は声にならない声で悦んでいる……
+			PRINTFORMW %COND("好きな体位中") ? "お気に入り体位で入れられながらの胸愛撫に" # "入れられながらの胸愛撫に"%%CALLNAME:TARGET%は声にならない声で悦んでいる……
 
 			NOWEX:ラグジャラスヒット = 1
 			EX:ラグジャラスヒット += 1
@@ -1139,8 +1145,8 @@ ELSEIF SELECTCOM >= 60 && SELECTCOM <= 69 && CHOSECOM(SELECTCOM) && RAND:3 == 0
 		ELSE
 			PRINTFORMW 
 		ENDIF
-	;お気に入りの体位
-	ELSEIF COND("お気に入りの体位中") && SELECTCOM == INSERT("Ｖ対応コマンド") && RAND:2
+	;好きな体位
+	ELSEIF COND("好きな体位中") && SELECTCOM == INSERT("Ｖ対応コマンド") && RAND:2
 		IF TALENT:恋慕
 			PRINTFORMW 
 		ELSE
@@ -1575,8 +1581,8 @@ ELSEIF SELECTCOM >= 70 && SELECTCOM <= 79 && CHOSECOM(SELECTCOM) && RAND:3 == 0
 	;余裕が無い
 	ELSEIF CHECK("Ａインサート") == 0
 		PRINTFORMW 
-	;お気に入りの体位
-	ELSEIF COND("お気に入りの体位中") && SELECTCOM == INSERT("Ａ対応コマンド") && RAND:2
+	;好きな体位
+	ELSEIF COND("好きな体位中") && SELECTCOM == INSERT("Ａ対応コマンド") && RAND:2
 		IF TALENT:恋慕
 			PRINTFORMW 
 		ELSE
@@ -3581,7 +3587,8 @@ IF SELECTCOM >= 60 && SELECTCOM <= 69 && TALENT:処女 && CEVENT("淫魔覚醒：マノン
 		IF COND("排卵中")	
 			PRINTFORMW 「おねが、いぃ、きょ、今日はほん、ほんとにだめ、なのぉ！！」
 			;破瓜れいぽぅっクスで超危険日だと妊娠しずらいが緩和されます。
-			TALENT:TARGET:妊娠しづらい -= 1
+			SIF TALENT:妊娠しづらい
+				TALENT:TARGET:妊娠しづらい -= 1
 		ELSEIF COND("危険日")
 			PRINTFORMW 「おねが、いぃ、きょ、今日、あぶなっ、いの！！」
 		ENDIF
@@ -4129,7 +4136,7 @@ ELSEIF SHOOT("Ｖ中出し")
 			SETCOLOR DEF_COLOR("ハートピンク")
 
 			PRINTFORML ＜ラグジャラスヒット！＞
-			PRINTFORMW %COND("お気に入りの体位中") ? "お気に入り体位で胸を愛撫されながらの膣内射精に、" # "胸を愛撫されながらの膣内射精で、"%%CALLNAME:TARGET%はこの上ない幸福感におぼれている……
+			PRINTFORMW %COND("好きな体位中") ? "お気に入り体位で胸を愛撫されながらの膣内射精に、" # "胸を愛撫されながらの膣内射精で、"%%CALLNAME:TARGET%はこの上ない幸福感におぼれている……
 
 			NOWEX:ラグジャラスヒット = 1
 			EX:ラグジャラスヒット += 1
@@ -4281,6 +4288,9 @@ CASE "Ｖコンドーム装着"
 				PRINTFORMW 「……あの、ゴム……」
 				PRINTFORMW 「やっ、だ、だめ、なんでしてくれないの！？」
 				PRINTFORMW 「まさか、もって、……だ、だめ、いれちゃ、っ、あっぁっ！！」
+			ELSE
+				;何もない場合でも、ゴムなんてなかった。
+				PRINTFORMW
 			ENDIF
 		;安全日に生希望
 		ELSEIF COND("安全日")
@@ -4296,6 +4306,8 @@ CASE "Ｖコンドーム装着"
 					PRINTFORMW 「ゴムしたくないなら、そのまましていいよ」
 					PRINTFORMW %CALLNAME:TARGET%は口の割に、うるんだ瞳と内股にすり合わせる下腹部を隠せていなかった。
 				ENDIF
+			ELSE
+				PRINTFORMW
 			ENDIF
 		;安全じゃないけどナマしたい
 		ELSEIF COND("女性主導生セックス") || COND("合意：危険日生セックス")
@@ -4308,6 +4320,8 @@ CASE "Ｖコンドーム装着"
 			ELSEIF CEVENT("破瓜：マノンをレイプする") && CEVENT("淫魔覚醒：マノン") == 0
 				;多分死にルートだろうけれど念のため。
 				PRINTFORML 
+			ELSE
+				PRINTFORMW
 			ENDIF
 		;安全日じゃないけどゴム無しを希望
 		ELSE
