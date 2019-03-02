@@ -23,7 +23,7 @@ CASE "挨拶する"
 			PRINTFORMW 「おはよう。そうそう、今日から私も一緒に学校行くことになったの」
 			PRINTFORMW 「どうしてかって？　それはやっぱり……昼間もシタいし」
 			PRINTFORMW 挑発的な潤み目が心臓に悪い。
-			PRINTFORMW 「というのは建前で、本当はただ飯食らいのままじゃよくないでしょう？　だから、何かお金稼げないかって思ったら……ちょうど学食のお仕事があったの。今日は初日というわけ」
+			PRINTFORMW 「というのは建前で、本当はただ飯食らいのままじゃよくないでしょう？　だから、何かお金稼げないかって思ったら……ちょうど学食のお仕事があったの。それで明日が初日というわけ」
 			PRINTFORMW 「これからは平日もデキるなんて夢みたいだわ……うん、そういうことなので、よろしくお願いしますね」
 			PRINTFORML
 			PRINTFORMW なんだかややこしいことになったと思う、%CALLNAME:MASTER%であったが、%CALLNAME:ARG%が持つそのたぐいまれなる絶対的なふたつの質量が話題を呼び、学食の名物になることをこの後知ることになる……
@@ -467,7 +467,42 @@ CASE "もてなす"
 			ENDIF
 		ENDIF
 	CASE "クンニ奉仕する"
-		PRINTFORMW 
+		;初めて
+		IF DAILY_EV(STR:日常イベント名) == 0
+			IF CEVENT("淫魔覚醒：マノン")
+				PRINTFORMW 「んっ？　ふぁ、何々、っぁぁ、もう、突然、それ感じちゃうか、らぁ……はぁ、っ」
+				PRINTFORMW %CALLNAME:TARGET%は%CALLNAME:MASTER%の熱心な奉仕にすっかり感じいって、達するたびに背筋が幾度も震えていた。
+			ELSE
+				PRINTFORMW 「ひゃぁっ！？　い、い、いやあああああ！！」
+				PRINTFORMW %CALLNAME:TARGET%は飛びのいてきつくこちらを睨み付けた。
+			ENDIF
+		;連続実行
+		ELSEIF CSTR:PREV_DAILYCOM == STR:日常イベント名
+			IF CEVENT("淫魔覚醒：マノン")
+				PRINTFORMW 「はぁ、はぁ、そんなに、そんなにされたら、がまんできなく、なっちゃうぅっ、ねぇ、お願い、ベッドで抱いて、舌よりもっと、しっかりと」
+				PRINTFORMW だが%CALLNAME:TARGET%の要望を聞き入れず、ひたすら奉仕にいそしんだ。
+			ELSE
+				PRINTFORMW 「やあああ！！　も、もうだめ！　もうやめて！！」
+				PRINTFORMW %CALLNAME:TARGET%は思いっきり平手でぶってきた。痛い。
+			ENDIF
+		;この時間で初実行
+		ELSEIF CHOSE_DAILY_EV(STR:日常イベント名) == 0 && RAND:2
+			IF CEVENT("淫魔覚醒：マノン")
+				PRINTFORMW 「んはっ！？　はぁ、びっくりした……んふ、いいよ、優しくさすってね？」
+				PRINTFORMW %CALLNAME:TARGET%は潤んだ目で、尻尾をつかむ%CALLNAME:MASTER%に上目遣いで訴えた。
+			ELSE
+				PRINTFORMW 「ひゃぁっ！？　あ、あ、あ、あの、しっぽ、しっぽだめ、やああ！！」
+				PRINTFORMW %CALLNAME:TARGET%はぞくぞくと背中を震わせる悪寒をぶつけるかのようににらみつけてきた。
+			ENDIF
+		ELSE
+			IF CEVENT("淫魔覚醒：マノン")
+				PRINTFORMW 「いいのぉ、尻尾感じちゃう……んふぁ、はぁぁ……ね、さすられてたら、我慢できなくなりそう……」
+				PRINTFORMW %CALLNAME:TARGET%の目に目覚めさせてはいけなさそうな情念をともしたように見えるが、気のせいだと信じたい。
+			ELSE
+				PRINTFORMW 「やあああ！！　も、もうだめ！　もうやめて！！」
+				PRINTFORMW %CALLNAME:TARGET%は思いっきり平手でぶってきた。痛い。
+			ENDIF
+		ENDIF
 	CASEELSE
 		PRINTFORMW 
 	ENDSELECT

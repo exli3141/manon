@@ -299,10 +299,11 @@ IF COND("排卵中") && (FLAG:日 % 21 >= 18 || FLAG:日 % 21 <= 3)
 ENDIF
 IF TALENT:相思相愛 && COND("排卵中")
 	;口上としては、相思相愛よりも妊娠しやすい波長の日が優先されます。
-	IF CEVENT("調教開始：相思相愛")
+	IF CEVENT("調教開始：相思相愛") && CEVENT("初めて相思相愛孕みっクス") == 0
 		;相思相愛初めて口上がまだのときはそれを考慮したものに。
-		PRINTFORML %CALLNAME:TARGET%は、初めて愛し合った%CALLNAME:MASTER%との子どもをどうしても宿したくなった。
+		PRINTFORML %CALLNAME:TARGET%は、心の通いあった%CALLNAME:MASTER%との子どもをどうしても宿したくなった。
 		;とりあえずいろいろ未実装ボーナス。
+		CALL SET_CEVENT("初めて相思相愛孕みっクス")
 		CALL SET_CEVENT("孕みたがりマノン")
 	ELSE
 		;そうでない場合に条件をシフトして口上を組む。
