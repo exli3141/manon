@@ -42,6 +42,7 @@
 ;
 ;おっぱいいじりながらのセックスはラグジャラスヒットします。そのまま中出しした場合はもう一回ラグジャラスヒットします。
 ;おっぱい以外をそのタイミングで弄っている場合は発生しません。
+;前からより後ろからのほうがおっぱいいじられながらのときに息苦しくなくて楽だとか。さらにただの種付けックス感が強くて何されるかわからない不安感のハラハラがたまらないため、よりバックを好むようです。
 ;
 ;マノンは当初えっちに二の足を踏む状態です（一度貫けばヒニン不要で危険日っクスもできるとか淫魔らしいところはありますが）
 ;ただ、精液中毒5lvか屈服刻印Lv3、あるいは恋慕や淫乱をつけることで子宮の渇望に耐えられなくなり、
@@ -98,6 +99,7 @@ CASE "勧誘"
 	PRINTFORMW 思いっきり頬を平手打ちされた。痛い。
 	PRINTFORM 　
 	PRINTFORMW だが、その出会いはひとりの落第淫魔を救う、小さくも大きな一歩だった。
+
 ;これは別になくても構いません
 CASE "勧誘直後"
 	PRINTFORML 
@@ -222,15 +224,39 @@ ELSEIF MARK:屈服刻印 == 2 && TALENT:恋慕 == 0 && CEVENT("調教開始：�
 ELSEIF MARK:屈服刻印 == 3 && TALENT:恋慕 == 0 && CEVENT("調教開始：屈服刻印ＬＶ３") == 0
 	CALL K19_APPROVAL_DEFLOWERING
 	CALL SET_CEVENT, "調教開始：屈服刻印ＬＶ３"
-;恋慕
-ELSEIF TALENT:恋慕 && CEVENT("調教開始：恋慕") == 0
-	PRINTFORMW 
-	CALL SET_CEVENT, "調教開始：恋慕"
 ;相思相愛
-ELSEIF TALENT:相思相愛 && CEVENT("調教開始：相思相愛") == 0
-	PRINTFORMW 
+ELSEIF TALENT:相思相愛 && CEVENT("調教開始：相思相愛") == 0 && CEVENT("淫魔覚醒：マノン") == 0	&& FIRSTCOMS("Ｖ挿入") == 0
+	PRINTFORMW 「あ、あの……あの」
+	PRINTFORMW 普段と違う、マノンの戸惑いが感じられる……今日はこらえが効かない。
+	PRINTFORMW 「私……その……んっっ」
+	PRINTFORMW 唇をふさいで、圧倒的な乳房を手に携えるように揉みしだく。
+	PRINTFORMW 「んぁぁ……そ、そんなに揉まれたらすぐ……」
+	PRINTFORMW マノンが嫌がるのは、すこし触られただけで達するくらい、他人に胸を触られることに弱いからだと知った。
+	PRINTFORMW いつも、いつも潔癖に性的なことを突っぱねようとするくせに、その実どこまでも、誰よりも性行為に貪欲な、淫魔らしい淫魔なのが彼女だ。
+	PRINTFORMW 「や、やぁ……そんな、淫乱じゃないよ……」
+	PRINTFORMW 「わ、わたし、落第するくらい、なんだよ」
+	PRINTFORMW そんなかわいい彼女に、いつから……惚れこんでいたんだろう。
+	PRINTFORMW 「で、でも……でも、わたしもう、我慢できないよ」
+	PRINTFORMW どうしようもないくらいに膨れ上がった劣情を、お互いに抱き合った中にあふれさせながら、ベッドに倒れ込んだ。
+	PRINTFORML
 	CALL SET_CEVENT, "調教開始：相思相愛"
-;他、淫魔覚醒フラグが立っている場合。
+	;恋慕突き抜けて相思相愛してた場合に恋慕セリフをオミットする。
+	CALL SET_CEVENT, "調教開始：恋慕"
+;恋慕
+ELSEIF TALENT:恋慕 && CEVENT("調教開始：恋慕") == 0 && CEVENT("淫魔覚醒：マノン") == 0	&& FIRSTCOMS("Ｖ挿入") == 0
+	PRINTFORMW 「わ、わた、わたし、あの……」
+	PRINTFORMW いつものように抱こうとするとマノンはためらいをあらわにするのだが……
+	PRINTFORMW 「今日は、その……ほんば、本番しても怒らないから……」
+	PRINTFORMW どういう風の吹き回しか。
+	PRINTFORMW あれほど嫌がっていたというのに。
+	PRINTFORMW 「だ、だって、だって……こんなの、初めてで、こんな気持ち、初めてで……」
+	PRINTFORMW 淫魔らしくもないのに淫魔にない感情に目覚めたと。
+	PRINTFORMW 「ら、ら、らしくないなんて、いいい言わないで。私、落第だから……」
+	PRINTFORMW そんな風に都合良く落第を使い分けるマノンのことを躾けるような行為をしてやろうともくろんだ。
+	PRINTFORMW 「！？　え……え……や、やぁ、やっぱ、そんな風ならだめぇっ」
+	PRINTFORML
+	CALL SET_CEVENT, "調教開始：恋慕"
+	;他、淫魔覚醒フラグが立っている場合。
 ELSEIF (ABL:TARGET:精液中毒 >= 5 || TALENT:淫乱) && CEVENT("調教開始：その他淫魔覚醒") == 0
 	CALL K19_APPROVAL_DEFLOWERING
 	CALL SET_CEVENT, "調教開始：その他淫魔覚醒"
@@ -328,7 +354,7 @@ IF TALENT:相思相愛 && COND("排卵中")
 					PRINTFORMW %CALLNAME:TARGET%は、自身の胎で受精卵を受け止めるための準備を万端にした！
 					CALL SET_CEVENT("孕みたがりマノン")
 				ENDIF
-			ELSEIF COND("アリーヌ", LCOUNT) || COND("さくら", LCOUNT) || COND("メリィエーナ", LCOUNT) || COND("パラチネ", LCOUNT)
+			ELSEIF COND("アリーヌ", LCOUNT) || COND("さくら", LCOUNT) || COND("メリィエーナ", LCOUNT) || COND("パラチネ", LCOUNT) || COND("マリー", LCOUNT)
 				IF COND("妊娠イベント中", LCOUNT) && (COND("同棲中", LCOUNT) || CSTR:学年 == "学食のお姉さん")
 					;対象が同棲しているか、自分が学食のお姉さんになっていなければ知らない。
 					;対象が妊娠イベント中でなければならない。
@@ -358,8 +384,8 @@ ELSE
 	PRINTFORMW 「ひっ、むぅぅぅ！！」
 	PRINTFORML
 	PRINTFORMW それだけで快楽を登り詰めて、口づけを離して絶叫した。
-	PRINTFORMW 面白くてついやりかけるが、彼女の体を最初に味わった日のように、そっと抱きしめた。
-	PRINTFORMW だがその抱きしめはあの時とは違う。
+	PRINTFORMW 面白くてついつい続けたくなる気持ちを抑え、彼女の体を最初に味わった日のように、そっと抱きしめた。
+	PRINTFORMW その抱きしめはあの時とは違う。
 	PRINTFORMW ぐっと硬く持ち上がった下腹部を、彼女の疼きに押し付けてやる。
 	PRINTFORML
 	PRINTFORMW 「ぁ……ふぁぁ……せっく、す……%CALLNAME:MASTER%、私、せっくすしたい……おまんこに、おちんぽ、抜き差ししてもらって、お腹の奥で	たくさん、精液と精子を飲みたいの……おねがい、しますっ！」
@@ -643,6 +669,10 @@ IF SELECTCOM == 5
 
 			NOWEX:ラグジャラスヒット = 1
 			EX:ラグジャラスヒット += 1
+
+			SIF FAV_POSITION("後背位")
+			;好きな体位がばっくのときはさらに欲情に補正。
+			TIMES CUP:欲情, 1.25
 
 			;中出しを合わせたら2.25倍
 			TIMES CUP:Ｖ潤, 1.50
@@ -1069,10 +1099,30 @@ IF SELECTCOM >= 60 && SELECTCOM <= 69 && FIRSTCOMS("Ｖ挿入") == 0
 	;処女
 	IF TALENT:処女
 		;条件を満たして許されていれば。本来のルートはこっち。
-		IF TALENT:恋慕 || TALENT:相思相愛
+		IF TALENT:恋慕 || TALENT:相思相愛 && CEVENT("淫魔覚醒：マノン") == 0
 			;純愛許諾ルート。
-			PRINTFORMW 
-			CALL SET_CEVENT("破瓜：許された喪失")
+			;覚醒自体を避けることはできませんが、若干セリフが変化します。たぶん。
+			PRINTFORMW 「す、するんだ……え、えと、うん、いいよ」
+			PRINTFORMW 「お腹の奥、もうたまらない……大好きな人のを受け入れたくて受け入れたくているの」
+			PRINTFORMW 「いままで拒絶してごめんなさい……今まで禁止しててごめんなさい……いま、まで、っぁ」
+			PRINTFORMW いろいろ我慢できない先端をマノンの入り口に押し付けた。
+			PRINTFORMW 「っく、うん、いいよ、いいの、きて、ほしい、たくましいの欲しい、がつがつ最奥突き上げてほしい……」
+			PRINTFORMW 「おね、おねが……あっっ！！」
+			PRINTFORML
+			PRINTFORMW マノンの言葉より早く、こらえの効かない茎を柔らかさに押し込んだ。
+			PRINTFORMW やや強めの抵抗は彼女の潤沢な愛液の中に飲まれるとすぐに消え、かわりに根元から先端を一瞬で白濁がつなぎきるほどの精感が襲う。
+			PRINTFORML 
+			PRINTFORMW 「っ、ぅ……」
+			PRINTFORMW 「はぁ、はいった、はいったよぉ、うれし、こ、こんなに、うれしいの、はじめて……あ、あの……あの……」
+			PRINTFORML
+			PRINTFORMW 「いちばん、奥で、びゅぅぅって、して……」
+			SIF COND("排卵中")
+				PRINTFORMW 「わ、わたし、あなたと、お腹の奥でも結ばれたいよ……」
+			PRINTFORMW マノンの悦びを叶えるべく、じっくりと暴れかけるのを抑えながら、腰を深く密着させた。
+			CALL SET_CEVENT("破瓜：幸せな喪失")
+			SIF COND("排卵中")
+			CALL SET_CEVENT("孕みたがりマノン")
+
 		ELSEIF CEVENT("淫魔覚醒：マノン") && CEVENT("破瓜：マノンをレイプする") == 0
 			;純愛ルートじゃないけど許されてる破瓜。
 			PRINTFORMW 「き、たぁ……っ！！」
@@ -3264,7 +3314,7 @@ IF SELECTCOM == 175
 			PRINTFORMW 
 		ELSEIF CHECK_SHIRT("看護婦")
 			PRINTFORMW 
-		ELSEIF CHECK_SHIRT("チャイナ服")
+		ELSEIF CHECK_SHIRT("チャイナドレス")
 			PRINTFORMW 
 		ELSEIF CHECK_SHIRT("セーラー服")
 			PRINTFORMW 
@@ -3508,7 +3558,7 @@ ENDIF
 SIF TEQUIP:口枷 && SELECTCOM != 135
 	RETURN 0
 
-IF SELECTCOM >= 60 && SELECTCOM <= 69 && TALENT:処女 && CEVENT("淫魔覚醒：マノン") == 0
+IF SELECTCOM >= 60 && SELECTCOM <= 69 && TALENT:処女 && CEVENT("淫魔覚醒：マノン") == 0 && TALENT:恋慕 == 0
 	PRINTFORML 「だ、だめ、だめです！　おちんぽ押し付けてるのだめっ！」
 	REPEAT 5
 		SELECTCASE COUNT
@@ -4386,15 +4436,11 @@ CASE "調教後レズプレイ"
 ;朝フェラ
 ;-------------------------------------------------
 CASE "朝フェラ"
-	;恋慕
-	IF TALENT:恋慕
-		PRINTFORMW 
-	;奉仕精神Lv3以上
-	ELSEIF ABL:奉仕精神 >= 3
-		PRINTFORMW 
-	;それ以外
+	IF CEVENT("淫魔覚醒：マノン")
+		PRINTFORMW 「んふ……　\@　CALLNAME:MASTER != "あなた" ? 、 %CALLNAME:MASTER% # \@。 %TEXTR("おはよう……/おはよ、びっくりした……？/おはよう、こういう起こされ方もたにはいいでしょ？/ん、ふ……ちゅ、んんっ/おはよ、ぅ……んちゅ")%」
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「\@　CALLNAME:MASTER != "あなた" ? 、 %CALLNAME:MASTER%、 # \@ あの、%TEXTR("べ、べつにせーしなんて……んむっ/んっ、ちゅ、ちゅば/こ、こうしなきゃ、辛そうだから/はぁ、んむっ、ちゅ")%」
+		PRINTFORMW 素直さのない悪態に聞こえるが、だいぶ熱心な口淫を続けていた。
 	ENDIF
 ;-------------------------------------------------
 ;朝クンニ
@@ -4425,12 +4471,19 @@ CASE "朝パイズリ"
 ;騎乗位で起こされる
 ;----------------------------
 CASE "朝騎乗位"
-	;恋慕
-	IF TALENT:恋慕
-		PRINTFORMW 
-	;それ以外
+	IF CEVENT("淫魔覚醒：マノン")
+		PRINTFORMW 「んふ……　\@　CALLNAME:MASTER != "あなた" ? 、 %CALLNAME:MASTER% # \@。 %TEXTR("おはよう……んっ/おはよ、んふ……はぁ/あ、んっっ、おはよぅ/んっ、ぁぁおは、よぉ/はぁ、はぁ、んふ、おはよぅ")%」
+		PRINTFORMW 目覚めと眠りの狭間で下半身が我慢の効かない遡りに目を覚ましたら、その絶対的質量をゆさぶる、一糸まとわぬマノンと目があった。
+		PRINTFORMW どれくらいまたがられていたのだろう…… \@ EXP_GAIN("射精経験", PLAYER) ? もうすぐにでも射精してしまいそうだった。 # 気を抜くとすぐにでも暴発してしまいそうった。\@
+		PRINTFORMW 「ん、そのまま……我慢しないで……おまんこの奥で……精液飲ませてぇ、っんぁああ！！」
+		PRINTFORMW こちらの限界を悟ったマノンが、自らの絶頂を重ねるように下半身を沈め、最奥へ深々と迎え入れていた。
+		;たぶん覚醒まのんの朝騎乗位とか射精を我慢するほうが難しい
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「\@　CALLNAME:MASTER != "あなた" ? 、 %CALLNAME:MASTER%、 # \@ あの、%TEXTR("あ、お、おきちゃっんんっ！！/あ、え、えと、あっ、ぁぁっ！！/ま、まってまってっ/ふぁ、っ！？　ぁうぅ！")%」
+		PRINTFORMW 目覚めと眠りの狭間で下半身が我慢の効かない遡りに目を覚ましたら、その絶対的質量をゆさぶる、一糸まとわぬマノンと目があった。
+		PRINTFORMW どれくらいまたがられていたのだろう…… \@ EXP_GAIN("射精経験", PLAYER) ? もうすぐにでも射精してしまいそうだった。 # 気を抜くとすぐにでも暴発してしまいそうった。\@
+		PRINTFORMW 「や、やぁ、えと、これはその、あのっ、っっうああああ！！」
+		PRINTFORMW \@　CEVENT("相思相愛：マノン") ? 想いが通い合っていても初々しい反応を返すマノンがかわいくて、思わず腰を両手で引き付けていた。 # あれだけ反発していても体渇望に耐えられないらしいので、最奥にみっちり先端を押し付けてやった。 \@
 	ENDIF
 ;-----------------------------
 ;正常位で犯されて起こされる

@@ -18,26 +18,23 @@ CASE "愛の告白"
 	ENDIF
 ;パンツのお願いした時に相手がノーパンだった
 CASE "ノーパン"
-	IF COND("合意：パンツ没収")
+	IF COND("合意：パンツ取引")
 
 	ELSE
 
 	ENDIF
 ;パンツを貰う前の会話。
-;ただし、悪魔の場合には魂を払っているので確実に渡すことになる
-;ここで本来パンツをあげるかどうかなどを加味して分岐を設ける事も出来る。特に書かなくてもよい
-;TFLAG:取引承諾 = 0とするとパンツ拒否に行くようになる
 CASE "パンツ取引"
-	SELECTCASE TCVAR:やる気
-	;ＯＫ！
-	CASE IS > 0
-	;断られる
-	CASEELSE
-	ENDSELECT
 
 CASE "パンツ"
 
 CASE "パンツ拒否"
+
+CASE "全裸取引"
+
+CASE "全裸"
+
+CASE "全裸拒否"
 
 CASE "同棲拒否"
 
@@ -146,51 +143,14 @@ CASE "尻尾を見せて"
 
 CASE "尻尾を見せて拒否"
 
-;以下は悪魔専用
-CASE "魂が足りない"
-
-CASE "お金が欲しい"
-
-CASE "甘い言葉"
-
-CASE "謎の魅力"
-
-CASE "錬金術"
-
-CASE "巨根化"
-	;これは"大きくなる前"のサイズなのに注意
-	SELECTCASE CONDS("ペニスサイズ", PLAYER)
-	CASE "小"
-
-	CASE "並"
-
-	CASE "巨根"
-
-	CASE "馬並み"
-
-	;腕並以上
-	CASEELSE
-
-	ENDSELECT
-CASE "短小化"
-	;これは"小さくなる前"のサイズなのに注意
-	SELECTCASE CONDS("ペニスサイズ", PLAYER)
-	CASE "並"
-
-	CASE "巨根"
-
-	CASE "馬並み"
-
-	;腕並、規格外
-	CASEELSE
-
-	ENDSELECT
-
 ;その他汎用
 CASEELSE
 	;汎用拒否
 	IF STRCOUNT(ARGS, "拒否")
 		PRINTFORMW 
+	;汎用取引（特に記述することがないならスキップ）
+	ELSEIF STRCOUNT(ARGS, "取引")
+
 	ELSE
 		PRINTFORMW 
 	ENDIF
